@@ -1,123 +1,59 @@
-# LLM Agent Proof-of-Concept (POC): Browser-Based Multi-Tool Reasoning
 
-Modern LLM-powered agents aren't limited to text—they can combine LLM output with external tools like web search, pipelined APIs, and even live code execution!
 
-This proof-of-concept walks you through building a browser-based agent that can use several tools, looping as needed to accomplish a goal.
+# AgentFlow: Quick Start Guide
 
-## Overview: POC Requirements
+AgentFlow is a browser-based proof-of-concept for multi-tool reasoning using LLM agents. This guide will help you set up, run, and understand the project.
 
-**Goal:**
-Build a minimal JavaScript-based LLM agent that can:
-- Take user input in the browser
-- Query an LLM for output
-- Dynamically trigger tool calls (e.g., search, AI workflow, code execution) based on LLM-chosen actions
-- Loop until the task is complete, integrating results at each step
-
-## Core Agent Logic
-
-The core logic is provided by the Python loop below - but it needs to be in JavaScript:
-
-```python
-def loop(llm):
-    msg = [user_input()]  # App begins by taking user input
-    while True:
-        output, tool_calls = llm(msg, tools)  # ... and sends the conversation + tools to the LLM
-        print("Agent: ", output)  # Always stream LLM output, if any
-        if tool_calls:  # Continue executing tool calls until LLM decides it needs no more
-            msg += [ handle_tool_call(tc) for tc in tool_calls ]  # Allow multiple tool calls (may be parallel)
-        else:
-            msg.append(user_input())  # Add the user input message and continue
-```
-
-## Supported Tool Calls
-
-Your agent should call these tools as needed:
-- **Google Search API**: Return snippet results for user queries
-- **AI Pipe API**: Use the aipipe proxy for flexible dataflows
-- **JavaScript Code Execution**: Securely run and display results of user- or agent-provided JS code within the browser
-
-## UI/Code Requirements
-
-- **Model Picker**: Use bootstrap-llm-provider so users choose the LLM provider/model
-- **LLM-Agent API**: Use OpenAI-style tool/function calls so the LLM can ask for tool actions and receive their results
-- **Alert/Error UI**: Show errors gracefully with bootstrap-alert
-- **Code Simplicity**: Keep all JavaScript and HTML as simple and small as possible—maximal hackability is the goal!
-
-## Example Agent Conversation
-
-Here's a sample "reasoning loop" in action:
-
-```
-User: Interview me to create a blog post.
-Agent: output = Sure! What's the post about?, tool_calls = []
-
-User: About IBM
-Agent: output = Let me search for IBM, tool_calls = [search("IBM")]
-
-Agent: output = OK, IBM is a big company founded in ..., tool_calls = []
-
-User: Next step, please.
-...
-```
+## What is AgentFlow?
+AgentFlow demonstrates how large language model (LLM) agents can interact with multiple APIs and tools to solve complex tasks in a web environment. It features a simple UI and a Node.js backend.
 
 ## Features
+- Multi-agent architecture
+- Integration with external APIs
+- Simple browser-based UI
+- Node.js backend
 
-### 🤖 Multi-Provider LLM Support
+## Supported LLM Models & Providers
 - **OpenAI**: GPT-4o, GPT-4.1, GPT-5
 - **Anthropic**: Claude 4.0 Sonnet, Claude 4.1 Opus
 - **Google**: Gemini 2.0 Flash, Gemini 2.5 Pro
 - **AI Pipe**: GPT-4o Mini, GPT-4o (via proxy)
 
-### 🔧 Integrated Tools
-- **Google Search**: Real-time web search with snippet results
-- **AI Pipe API**: Advanced AI workflows and data processing
-- **JavaScript Execution**: Safe in-browser code execution
+## Getting Started
 
-### 🎛️ Dynamic Configuration
-- Real-time provider/model switching
-- API key validation and secure handling
-- Professional logging with debug mode
-- Bootstrap-based responsive UI
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd AgentFlow-main
-```
-
-2. Install dependencies:
-```bash
+### 1. Install Dependencies
+Open a terminal in the project folder and run:
+```sh
 npm install
 ```
 
-3. Start the server:
-```bash
+### 2. Start the Backend Server
+Run:
+```sh
 node server.js
 ```
 
-4. Open your browser to `http://localhost:3000`
+### 3. Open the Frontend
+Open `index.html` in your browser. This is the main interface for interacting with the agent.
 
-## API Configuration
+## Project Structure
+- `agent.js` — Main agent logic
+- `server.js` — Backend server
+- `index.html` — Frontend UI
+- `styles.css` — UI styles
 
-### Required API Keys
+## How It Works
+1. Enter your query in the browser UI.
+2. The agent processes your input and may call external APIs or tools as needed.
+3. Results are displayed in the browser, and the agent can loop through reasoning steps until the task is complete.
 
-1. **OpenAI**: Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys)
-2. **Anthropic**: Get your API key from [Anthropic Console](https://console.anthropic.com/)
-3. **Google Gemini**: Get your API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
-4. **AI Pipe**: Get free access at [aipipe.org/login](https://aipipe.org/login)
-5. **Google Search**: Configure Custom Search Engine at [Google Cloud Console](https://console.cloud.google.com/)
+## Tips
+- Make sure Node.js is installed on your system.
+- You may need API keys for some external services (see project code for details).
+- For development, keep the UI and backend running in parallel.
 
-### Environment Setup
-
-No environment files needed - all configuration is done through the web interface for maximum hackability and ease of use.
-
-## Architecture
-
-### Frontend (`agent.js`)
-- `LLMAgent` class handles the conversation loop
-- Dynamic model switching and API key management
+---
+For more details, explore the code and experiment with different queries!
 - Tool call handling with parallel execution
 - Bootstrap-based UI with real-time feedback
 
