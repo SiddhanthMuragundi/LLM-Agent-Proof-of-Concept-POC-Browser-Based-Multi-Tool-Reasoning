@@ -154,13 +154,6 @@ A browser JS app with LLM conversation window and three working tool integration
 
 Uses OpenAI's tool-calling interface for all tool invocations. Shows errors with bootstrap-alert. Code is minimal and easy to extend.
 
-## Evaluation Criteria (2 Marks)
-
-| Criteria | Marks |
-|----------|-------|
-| Output functionality | 1.0 |
-| Code quality & clarity | 0.5 |
-| UI/UX polish & extras | 0.5 |
 
 ## Browser Compatibility
 
