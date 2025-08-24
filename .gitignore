@@ -1,0 +1,45 @@
+# Node.js
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.*
+
+# Build
+/dist
+/build
+
+# Misc
+*.swp
+*.swo
+*.tmp
+*.bak
+
+# VS Code
+.vscode/
+
+# Coverage
+coverage/
+
+# Others
+*.pptx
+*.potx
+
+# Ignore backups and copies
+*copy*
+*backup*
+
+# Ignore generated files
+*.zip
+*.tar.gz
