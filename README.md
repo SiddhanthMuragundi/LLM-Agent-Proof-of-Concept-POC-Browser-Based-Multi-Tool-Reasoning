@@ -5,7 +5,7 @@ AgentFlow is a browser-based proof-of-concept for multi-tool reasoning using LLM
 ## What is AgentFlow?
 AgentFlow demonstrates how large language model (LLM) agents can interact with multiple APIs and tools to solve complex tasks in a web environment. It features a simple UI and a Node.js backend.
 
-🌐 **Try it live**: [https://llm-agent-proof-of-concept-poc-browser-based-mul-production.up.railway.app/]([https://agentflow-production.up.railway.app/](https://llm-agent-proof-of-concept-poc-browser-based-mul-production.up.railway.app/))
+🌐 **Try it live**: [https://llm-agent-proof-of-concept-poc-browser-based-mul-production.up.railway.app/](https://llm-agent-proof-of-concept-poc-browser-based-mul-production.up.railway.app/)
 
 ## Features
 - Multi-agent architecture
